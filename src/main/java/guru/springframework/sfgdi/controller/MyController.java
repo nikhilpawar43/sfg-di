@@ -2,12 +2,18 @@ package guru.springframework.sfgdi.controller;
 
 import org.springframework.stereotype.Controller;
 
+import guru.springframework.sfgdi.service.GreetingService;
+
 @Controller
 public class MyController {
     
+    private GreetingService greetingService;
+
+    public MyController(GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+
     public String sayHello() {
-        System.out.println("Hello world !!!");
-        
-        return "Hi Folks !";
+        return greetingService.sayGreeting();
     }
 }
