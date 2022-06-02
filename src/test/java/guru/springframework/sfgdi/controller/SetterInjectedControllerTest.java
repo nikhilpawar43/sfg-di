@@ -3,7 +3,7 @@ package guru.springframework.sfgdi.controller;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import guru.springframework.sfgdi.service.GreetingServiceImpl;
+import guru.springframework.sfgdi.service.ConstructorInjectedGreetingService;
 
 class SetterInjectedControllerTest {
     
@@ -12,7 +12,7 @@ class SetterInjectedControllerTest {
     @BeforeEach
     void setUp() {
         setterInjectedController = new SetterInjectedController();
-        setterInjectedController.setGreetingService(new GreetingServiceImpl());
+        setterInjectedController.setGreetingService(new ConstructorInjectedGreetingService());
     }
 
     @Test
