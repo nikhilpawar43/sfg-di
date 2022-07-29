@@ -3,7 +3,7 @@ package guru.springframework.sfgdi.controller;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 
-import guru.springframework.sfgdi.service.PetService;
+import guru.springframework.pets.PetService;
 
 @Controller
 public class PetController {
