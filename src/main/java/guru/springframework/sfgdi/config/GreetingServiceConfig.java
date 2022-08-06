@@ -2,6 +2,7 @@ package guru.springframework.sfgdi.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 
@@ -13,6 +14,7 @@ import guru.springframework.sfgdi.service.I18NEnglishGreetingService;
 import guru.springframework.sfgdi.service.I18NSpanishGreetingService;
 import guru.springframework.sfgdi.service.PrimaryGreetingService;
 
+@ImportResource("classpath:sfgdi-config.xml")
 @Configuration
 public class GreetingServiceConfig {
 
