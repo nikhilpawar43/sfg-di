@@ -11,6 +11,8 @@ import guru.springframework.sfgdi.controller.MyController;
 import guru.springframework.sfgdi.controller.PetController;
 import guru.springframework.sfgdi.controller.PropertyInjectedController;
 import guru.springframework.sfgdi.controller.SetterInjectedController;
+import guru.springframework.sfgdi.service.PrototypeBean;
+import guru.springframework.sfgdi.service.SingletonBean;
 
 @ComponentScan(basePackages = {"guru.springframework.sfgdi", "guru.springframework.pets"})
 @SpringBootApplication
@@ -41,6 +43,17 @@ public class SfgDiApplication {
         System.out.println("------------ Constructor");
         ConstructorInjectedController constructorInjectedControllerBean = context.getBean("constructorInjectedController", ConstructorInjectedController.class);
         System.out.println(constructorInjectedControllerBean.getGreeting());
+
+        System.out.println("------------ Bean scopes ------------");
+        SingletonBean singletonBean1 = context.getBean(SingletonBean.class);
+        System.out.println(singletonBean1.getMyScope());
+        SingletonBean singletonBean2 = context.getBean(SingletonBean.class);
+        System.out.println(singletonBean2.getMyScope());
+
+        PrototypeBean prototypeBean1 = context.getBean(PrototypeBean.class);
+        System.out.println(prototypeBean1.getMyScope());
+        PrototypeBean prototypeBean2 = context.getBean(PrototypeBean.class);
+        System.out.println(prototypeBean2.getMyScope());
     }
 
 }
