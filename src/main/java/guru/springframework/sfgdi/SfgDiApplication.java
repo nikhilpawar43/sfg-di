@@ -11,6 +11,7 @@ import guru.springframework.sfgdi.controller.MyController;
 import guru.springframework.sfgdi.controller.PetController;
 import guru.springframework.sfgdi.controller.PropertyInjectedController;
 import guru.springframework.sfgdi.controller.SetterInjectedController;
+import guru.springframework.sfgdi.datasource.FakeDataSource;
 import guru.springframework.sfgdi.service.PrototypeBean;
 import guru.springframework.sfgdi.service.SingletonBean;
 
@@ -54,6 +55,10 @@ public class SfgDiApplication {
         System.out.println(prototypeBean1.getMyScope());
         PrototypeBean prototypeBean2 = context.getBean(PrototypeBean.class);
         System.out.println(prototypeBean2.getMyScope());
+
+        System.out.println("------------ Fake datasource ------------");
+        FakeDataSource fakeDataSource = context.getBean("fakeDataSource", FakeDataSource.class);
+        System.out.println(fakeDataSource);
     }
 
 }

@@ -1,19 +1,23 @@
 package guru.springframework.sfgdi.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.PropertySource;
 
 import guru.springframework.pets.PetService;
 import guru.springframework.pets.PetServiceFactory;
+import guru.springframework.sfgdi.datasource.FakeDataSource;
 import guru.springframework.sfgdi.repository.EnglishGreetingRepository;
 import guru.springframework.sfgdi.repository.EnglishGreetingRepositoryImpl;
 import guru.springframework.sfgdi.service.I18NEnglishGreetingService;
 import guru.springframework.sfgdi.service.I18NSpanishGreetingService;
 import guru.springframework.sfgdi.service.PrimaryGreetingService;
 
+@PropertySource("classpath:datasource.properties")
 @ImportResource("classpath:sfgdi-config.xml")
 @Configuration
 public class GreetingServiceConfig {
@@ -56,5 +60,17 @@ public class GreetingServiceConfig {
     @Profile({"dog", "default"})
     public PetService dogPetService(PetServiceFactory petServiceFactory) {
         return petServiceFactory.getPetService("DOG");
+    }
+    
+    @Bean
+    public FakeDataSource fakeDataSource(@Value("${guru.fakedatabase.username}") String username,
+                                        @Value("${guru.fakedatabase.password}")String password,
+                                        @Value("${guru.fakedatabase.jdbcurl}")String jdbcUrl) {
+        FakeDataSource fakeDataSource = new FakeDataSource();
+        fakeDataSource.setUsername(username);
+        fakeDataSource.setPassword(password);
+        fakeDataSource.setJdbcUrl(jdbcUrl);
+        
+        return fakeDataSource;
     }
 }
