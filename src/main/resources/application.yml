@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    active: dog,EN
+    
+guru:
+  fakedatabase:
+    username: ymlDbUser
+    password: ymlPassword
+    jdbcurl: ymlJdbcUrl
