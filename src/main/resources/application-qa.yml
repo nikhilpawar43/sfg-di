@@ -1,0 +1,5 @@
+guru:
+  fakedatabase:
+    username: qauser
+    password: qapassword
+    jdbcurl: http://localhost:8082/qa_db

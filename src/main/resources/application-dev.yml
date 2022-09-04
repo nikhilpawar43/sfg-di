@@ -1,0 +1,5 @@
+guru:
+  fakedatabase:
+    username: dev_user
+    password: dev_password
+    jdbcurl: http://localhost:8082/dev_db
