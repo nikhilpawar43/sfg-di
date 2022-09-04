@@ -1,5 +1,6 @@
 package guru.springframework.sfgdi;
 
+import guru.springframework.sfgdi.config.SfgConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -59,6 +60,10 @@ public class SfgDiApplication {
         System.out.println("------------ Fake datasource ------------");
         FakeDataSource fakeDataSource = context.getBean("fakeDataSource", FakeDataSource.class);
         System.out.println(fakeDataSource);
+
+        System.out.println("------------ Config props binding ------------");
+        SfgConfiguration sfgConfiguration = context.getBean(SfgConfiguration.class);
+        System.out.println(sfgConfiguration);
     }
 
 }
