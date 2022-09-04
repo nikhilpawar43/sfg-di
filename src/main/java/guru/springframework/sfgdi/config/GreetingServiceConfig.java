@@ -8,8 +8,10 @@ import guru.springframework.sfgdi.repository.EnglishGreetingRepositoryImpl;
 import guru.springframework.sfgdi.service.I18NEnglishGreetingService;
 import guru.springframework.sfgdi.service.I18NSpanishGreetingService;
 import guru.springframework.sfgdi.service.PrimaryGreetingService;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.*;
 
+@EnableConfigurationProperties(SfgContructorConfig.class)
 @ImportResource("classpath:sfgdi-config.xml")
 @Configuration
 public class GreetingServiceConfig {
@@ -55,11 +57,11 @@ public class GreetingServiceConfig {
     }
     
     @Bean
-    public FakeDataSource fakeDataSource(SfgConfiguration sfgConfiguration) {
+    public FakeDataSource fakeDataSource(SfgContructorConfig sfgContructorConfig) {
         FakeDataSource fakeDataSource = new FakeDataSource();
-        fakeDataSource.setUsername(sfgConfiguration.getUsername());
-        fakeDataSource.setPassword(sfgConfiguration.getPassword());
-        fakeDataSource.setJdbcUrl(sfgConfiguration.getJdbcUrl());
+        fakeDataSource.setUsername(sfgContructorConfig.getUsername());
+        fakeDataSource.setPassword(sfgContructorConfig.getPassword());
+        fakeDataSource.setJdbcUrl(sfgContructorConfig.getJdbcUrl());
         
         return fakeDataSource;
     }
